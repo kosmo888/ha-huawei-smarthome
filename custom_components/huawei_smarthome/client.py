@@ -735,8 +735,12 @@ class HuaweiSmartHomeClient:
         descriptor: RemoteDeviceDescriptor,
     ) -> HuaweiProductAdapter | None:
         if not isinstance(descriptor.prod_id, str):
+            _LOGGER.warning("Device %s has no prod_id (model: %s, dev_id: %s)", descriptor.name, descriptor.model, descriptor.dev_id)
             return None
-        return self._adapters.get(descriptor.prod_id.strip().casefold())
+        res = self._adapters.get(descriptor.prod_id.strip().casefold())
+        if "德施曼" in descriptor.name or "21RM" in descriptor.prod_id:
+            _LOGGER.warning("Checking lock adapter: prod_id=%r, found=%r", descriptor.prod_id, res)
+        return res
 
     def _sync_protocol_devices(self) -> None:
         current: dict[tuple[str, str], DeviceContext] = {}
