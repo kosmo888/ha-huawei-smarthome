@@ -106,6 +106,7 @@ class Product21RMAdapter:
     """华为智选 德施曼智能门锁Pro (21RM) 适配器。"""
 
     prod_id = "21RM"
+    fallback_profile = _FALLBACK_PROFILE
 
     def entities(self, context: DeviceContext) -> tuple[EntitySpec, ...]:
         if getattr(context, "profile", None) is None:
