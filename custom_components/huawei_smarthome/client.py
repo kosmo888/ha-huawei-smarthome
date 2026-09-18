@@ -165,6 +165,7 @@ class HuaweiSmartHomeClient:
         stored = await self.state_store.async_load()
         if stored is not None:
             self.state = stored
+        self._sync_protocol_devices()
         self.state.selected_home_ids = self.selected_home_ids or frozenset()
         self.state.connection = ConnectionState.AUTHENTICATING
         try:
