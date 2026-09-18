@@ -754,6 +754,7 @@ class HuaweiSmartHomeClient:
             context = self._protocol_devices.get(key)
             profile = self._profile_for_device(descriptor)
             adapter = self._adapter_for_device(descriptor)
+            _LOGGER.error("SYNC DEVICE: name=%s model=%s prod_id=%s adapter=%s profile=%s", descriptor.name, descriptor.model, descriptor.prod_id, adapter is not None, profile is not None)
             if adapter is not None and profile is None and hasattr(adapter, 'fallback_profile'):
                 profile = adapter.fallback_profile
             if adapter is None and "德施曼" in (descriptor.name or ""):
