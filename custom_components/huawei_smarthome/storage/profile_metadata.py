@@ -159,7 +159,7 @@ class HomeAssistantProfileStore:
                     if response.status != 200:
                         raise RuntimeError(f"HTTP {response.status}")
                     text = await response.text(encoding="utf-8-sig")
-                payload = json.loads(text)
+                    payload = json.loads(text)
                 profile = _profile_from_payload(payload)
             except Exception as error:  # noqa: BLE001 - Profile is optional
                 _LOGGER.debug(
