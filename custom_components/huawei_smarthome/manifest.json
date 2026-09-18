@@ -10,5 +10,5 @@
     "cryptography>=42.0.0",
     "paho-mqtt>=2.0.0"
   ],
-  "version": "2026.9.13"
+  "version": "2026.9.14"
 }

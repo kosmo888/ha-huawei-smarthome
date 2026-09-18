@@ -1,3 +1,4 @@
+import json
 """Read-only product metadata from the local Profile cache."""
 
 from __future__ import annotations
@@ -157,7 +158,8 @@ class HomeAssistantProfileStore:
                 async with self._session.get(url, timeout=20) as response:
                     if response.status != 200:
                         raise RuntimeError(f"HTTP {response.status}")
-                    payload = await response.json(content_type=None)
+                    text = await response.text(encoding="utf-8-sig")
+                payload = json.loads(text)
                 profile = _profile_from_payload(payload)
             except Exception as error:  # noqa: BLE001 - Profile is optional
                 _LOGGER.debug(
