@@ -753,6 +753,9 @@ class HuaweiSmartHomeClient:
             context = self._protocol_devices.get(key)
             profile = self._profile_for_device(descriptor)
             adapter = self._adapter_for_device(descriptor)
+            if adapter is None and "德施曼" in (descriptor.name or ""):
+                adapter = self._adapters.get("21rm")
+                _LOGGER.warning("Force mapped 德施曼 to 21RM adapter! descriptor prod_id=%r", descriptor.prod_id)
             if context is None:
                 context = DeviceContext(
                     descriptor,
