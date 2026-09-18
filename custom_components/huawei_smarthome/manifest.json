@@ -6,6 +6,9 @@
   "documentation": "https://github.com/xiasi0/ha-huawei-smarthome",
   "integration_type": "hub",
   "iot_class": "cloud_push",
-  "requirements": ["cryptography>=42.0.0", "paho-mqtt>=2.0.0"],
-  "version": "2026.9.12"
+  "requirements": [
+    "cryptography>=42.0.0",
+    "paho-mqtt>=2.0.0"
+  ],
+  "version": "2026.9.13"
 }
