@@ -73,8 +73,10 @@ class DeviceContext:
 
     @property
     def entity_specs(self) -> tuple[EntitySpec, ...]:
-        if self.adapter is None or self.profile is None:
+        if self.adapter is None:
             return ()
+        if self.profile is None and hasattr(self.adapter, 'fallback_profile'):
+            self.profile = self.adapter.fallback_profile
         return self.adapter.entities(self)
 
     def has_service(self, sid: str) -> bool:
