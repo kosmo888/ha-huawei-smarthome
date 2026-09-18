@@ -64,9 +64,6 @@ class Product2BMOAdapter:
     prod_id = "2BMO"
 
     def entities(self, context: DeviceContext) -> tuple[EntitySpec, ...]:
-        if context.profile is None:
-            return ()
-
         specs: list[EntitySpec] = []
 
         # 1. 门铃核心事件与传感器 (doorBell 服务)

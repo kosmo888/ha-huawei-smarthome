@@ -106,9 +106,6 @@ class Product21RMAdapter:
     prod_id = "21RM"
 
     def entities(self, context: DeviceContext) -> tuple[EntitySpec, ...]:
-        if context.profile is None:
-            return ()
-
         specs: list[EntitySpec] = []
 
         # 1. 电池电量 (sensor)
